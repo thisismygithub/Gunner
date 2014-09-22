@@ -18,11 +18,8 @@ namespace Gunner
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-            routes.MapRoute(
-                name: "Arsenal",
-                url: "Arsenal/{controller}/{action}/{id}",
-                defaults: new { controller = "Arsenal.History", action = "Index", id = UrlParameter.Optional }
-                );
+
+
         }
     }
 }
