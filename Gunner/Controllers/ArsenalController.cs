@@ -13,6 +13,8 @@ namespace Gunner.Controllers
         // GET: Arsenal
         public ActionResult Index()
         {
+            var fixtures = new List<Fixtures>();
+            //fixtures.Add(new Fixtures());
             return View();
         }
     }
