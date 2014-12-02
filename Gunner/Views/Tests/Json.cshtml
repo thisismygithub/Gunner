@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form>
+    <h2>JSON Test</h2>
+
+    <input type="submit" formmethod="post" formaction="/Marsen/Tests/Json" value="GO">
+    <input type="text" name="name" value=" " />
+    <input type="hidden" name="json" value="{key:123}" />
+    @Html.TextArea("jsonarea", (string)ViewBag.jsonKey, 4, 50, new { @id = "jsonareaid", @title = "Comment" })
+
+
+
+</form>
