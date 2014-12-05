@@ -37,5 +37,10 @@ namespace Gunner.Controllers
             return View(model);
             
         }
+
+        public ActionResult Css()
+        {
+            return View();
+        }
     }
 }

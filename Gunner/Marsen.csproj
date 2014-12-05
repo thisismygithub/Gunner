@@ -192,6 +192,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Css\Reset.css">
+      <DependentUpon>Reset.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Css\Reset.min.css">
+      <DependentUpon>Reset.css</DependentUpon>
+    </Content>
     <Content Include="Dll\Newtonsoft.Json.dll" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -199,6 +205,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Css\Reset.scss" />
+    <Content Include="Content\Css\Reset.css.map">
+      <DependentUpon>Reset.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -252,6 +262,7 @@
     <Content Include="Views\Arsenal\Index.cshtml" />
     <Content Include="Views\Tests\Index.cshtml" />
     <Content Include="Views\Tests\Json.cshtml" />
+    <Content Include="Views\Tests\Css.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
