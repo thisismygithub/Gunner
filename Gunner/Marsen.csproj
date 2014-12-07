@@ -192,6 +192,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Css\Frame.css">
+      <DependentUpon>Frame.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Css\Frame.min.css">
+      <DependentUpon>Frame.css</DependentUpon>
+    </Content>
     <Content Include="Content\Css\Reset.css">
       <DependentUpon>Reset.scss</DependentUpon>
     </Content>
@@ -208,6 +214,10 @@
     <Content Include="Content\Css\Reset.scss" />
     <Content Include="Content\Css\Reset.css.map">
       <DependentUpon>Reset.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Css\Frame.scss" />
+    <Content Include="Content\Css\Frame.css.map">
+      <DependentUpon>Frame.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -262,7 +272,12 @@
     <Content Include="Views\Arsenal\Index.cshtml" />
     <Content Include="Views\Tests\Index.cshtml" />
     <Content Include="Views\Tests\Json.cshtml" />
-    <Content Include="Views\Tests\Css.cshtml" />
+    <Content Include="Views\Tests\Css\Css.cshtml" />
+    <Content Include="Views\Tests\Css\twoColumn.cshtml" />
+    <Content Include="Views\Tests\Css\ThreeColume.cshtml" />
+    <Content Include="Views\Tests\Css\OneColume.cshtml" />
+    <Content Include="Views\Tests\Css\TwoColume.cshtml" />
+    <Content Include="Views\Tests\Css\OneColumeHTML5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,7 +26,9 @@ namespace Gunner
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
-
+            bundles.Add(new StyleBundle("~/Content/Css/framework").Include(
+                      "~/Content/Css/Reset.css",
+                      "~/Content/Css/Frame.css"));
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
             BundleTable.EnableOptimizations = true;

@@ -38,9 +38,36 @@ namespace Gunner.Controllers
             
         }
 
-        public ActionResult Css()
+        public ActionResult Css(string id)
         {
-            return View();
+            ViewResult result;
+            var action = id ?? string.Empty;
+            //TODO:Marsen  without string switch
+            switch (action.ToLower())
+            {
+                case "onecolume":
+                    result = View("~/Views/Tests/Css/OneColume.cshtml");
+                    break;
+                case "onecolumehtml5":
+                    result = View("~/Views/Tests/Css/OneColumeHTML5.cshtml");
+                    break;
+                case "twocolume":
+                    result = View("~/Views/Tests/Css/TwoColume.cshtml");
+                    break;
+                case "twocolumehtml5":
+                    result = View("~/Views/Tests/Css/TwoColume.cshtml");
+                    break;
+                case "threecolume":
+                    result = View("~/Views/Tests/Css/ThreeColume.cshtml");
+                    break;
+                case "threecolumehtml5":
+                    result = View("~/Views/Tests/Css/ThreeColume.cshtml");
+                    break;
+                default:
+                    result =  View("~/Views/Tests/Css/Css.cshtml");
+                    break;
+            }
+            return result;
         }
     }
 }
