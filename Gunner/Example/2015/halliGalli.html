@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <script type='text/javascript'>
+	  $(function(){
+	  var idx=0, porker = []; 
+	 
+	$("#Btn").click(function(){
+		var $display = $("#display");
+	    $display.html(porker[idx]);
+	    $("#currentCard").removeClass().addClass('card').addClass(porker[idx]);
+	    idx++;
+	});
+	  
+	  function run() {
+		   
+		
+		for(var m = 0 ; m < 4 ; m++){
+		  for(var n = 0 ; n < 13; n++){
+			var card = n+1;
+			switch(m){
+			  case 0:
+				  card = "Spade" + card;
+				break;
+			  case 1:
+				  card = "Heart" + card;
+				break;
+			  case 2:
+				  card = "Diamond" + card;
+				break;
+			  case 3: 
+				  card = "Club" + card;
+				break;            
+			}
+			porker.push(card);
+		  }
+		}
+		var i = porker.length; 
+		//console.log(i);
+		while (i) {
+			var j = parseInt(Math.random() * i);
+			var k = porker[--i];
+			porker[i] = porker[j];
+			porker[j] = k;
+		}
+		 
+		document.getElementById("allCards").innerHTML = porker;
+	  }
+	  run();
+	});
+  </script>
+  <style>
+	#allCards{
+	  /*display:none;*/
+	}
+	.card{
+        background-image:url("pokers.png");
+        background-position:158px 240px;
+        width:158px;
+        height:240px;
+	}
+    .Spade1 {
+        background-position: 0 0;
+    }
+    .Spade2 {
+        background-position: -158px 0;
+    }
+    .Spade3 {
+        background-position: -316px 0;
+    }
+    .Spade4 {
+        background-position: -474px 0;
+    }
+    .Spade5 {
+        background-position: -632px 0;
+    }
+    .Spade6 {
+        background-position: -790px 0;
+    }
+    .Spade7 {
+        background-position: -948px 0;
+    }
+    .Spade8 {
+        background-position: -1106px 0;
+    }
+    .Spade9 {
+        background-position: -1260px 0;
+    }
+    .Spade10 {
+        background-position: -1422px 0;
+    }
+    .Spade11 {
+        background-position: -1580px 0;
+    }
+    .Spade12 {
+        background-position: -1738px  0;
+    }
+    .Spade13 {
+        background-position: -1896px 0;
+    }
+    .Club1 {
+        background-position: 0 -238px;
+    }
+    .Club2 {
+        background-position: -158px -238px;
+    }
+    .Club3 {
+        background-position: -316px -238px;
+    }
+    .Club4 {
+        background-position: -474px -238px;
+    }
+    .Club5 {
+        background-position: -632px -238px;
+    }
+    .Club6 {
+        background-position: -790px -238px;
+    }
+    .Club7 {
+        background-position: -948px -238px;
+    }
+    .Club8 {
+        background-position: -1106px -238px;
+    }
+    .Club9 {
+        background-position: -1260px -238px;
+    }
+    .Club10 {
+        background-position: -1422px -238px;
+    }
+    .Club11 {
+        background-position: -1580px -238px;
+    }
+    .Club12 {
+        background-position: -1738px  -238px;
+    }
+    .Club13 {
+        background-position: -1896px -238px;
+    }
+    .Heart1 {
+        background-position: 0 -477px;
+    }
+    .Heart2 {
+        background-position: -158px -477px;
+    }
+    .Heart3 {
+        background-position: -316px -477px;
+    }
+    .Heart4 {
+        background-position: -474px -477px;
+    }
+    .Heart5 {
+        background-position: -632px -477px;
+    }
+    .Heart6 {
+        background-position: -790px -477px;
+    }
+    .Heart7 {
+        background-position: -948px -477px;
+    }
+    .Heart8 {
+        background-position: -1106px -477px;
+    }
+    .Heart9 {
+        background-position: -1260px -477px;
+    }
+    .Heart10 {
+        background-position: -1422px -477px;
+    }
+    .Heart11 {
+        background-position: -1580px -477px;
+    }
+    .Heart12 {
+        background-position: -1738px  -477px;
+    }
+    .Heart13 {
+        background-position: -1896px -477px;
+    }
+    .Diamond1 {
+        background-position: 0 -716px;
+    }
+    .Diamond2 {
+        background-position: -158px -716px;
+    }
+    .Diamond3 {
+        background-position: -316px -716px;
+    }
+    .Diamond4 {
+        background-position: -474px -716px;
+    }
+    .Diamond5 {
+        background-position: -632px -716px;
+    }
+    .Diamond6 {
+        background-position: -790px -716px;
+    }
+    .Diamond7 {
+        background-position: -948px -716px;
+    }
+    .Diamond8 {
+        background-position: -1106px -716px;
+    }
+    .Diamond9 {
+        background-position: -1260px -716px;
+    }
+    .Diamond10 {
+        background-position: -1422px -716px;
+    }
+    .Diamond11 {
+        background-position: -1580px -716px;
+    }
+    .Diamond12 {
+        background-position: -1738px  -716px;
+    }
+    .Diamond13 {
+        background-position: -1896px -716px;
+    }
+   </style>
+</head>
+<body>
+  <div id='allCards'></div>
+  <div id="display"></div>
+<input id='Btn' value='下一張' type='button'></ipnut>
+  <div id="currentCard" class='card'></div>
+</body>
+</html>
