@@ -9,15 +9,19 @@
 	  var idx=0, porker = []; 
 	 
 	$("#Btn").click(function(){
+		if(idx==51){//重發一副
+			idx=0, porker = []; 
+			run();
+		}
 		var $display = $("#display");
-	    $display.html(porker[idx]);
+		//debugger;
+	    //$display.html(porker[idx]);
 	    $("#currentCard").removeClass().addClass('card').addClass(porker[idx]);
 	    idx++;
+
 	});
-	  
-	  function run() {
-		   
-		
+	
+	function run() {
 		for(var m = 0 ; m < 4 ; m++){
 		  for(var n = 0 ; n < 13; n++){
 			var card = n+1;
@@ -47,7 +51,7 @@
 			porker[j] = k;
 		}
 		 
-		document.getElementById("allCards").innerHTML = porker;
+		$("#allCards").html(porker);
 	  }
 	  run();
 	});
