@@ -1,0 +1,166 @@
+#allCards{
+	  display:none;
+	}
+	.card{
+        background-image:url("pokers_200.png");
+        background-position:316px 480px;
+        width:316px;
+        height:480px;
+        margin: 0 auto;
+	}
+    .Spade1 {
+        background-position: 0 0;
+    }
+    .Spade2 {
+        background-position: -316px 0;
+    }
+    .Spade3 {
+        background-position: -632px 0;
+    }
+    .Spade4 {
+        background-position: -948px 0;
+    }
+    .Spade5 {
+        background-position: -1264px 0;
+    }
+    .Spade6 {
+        background-position: -1580px 0;
+    }
+    .Spade7 {
+        background-position: -1896px 0;
+    }
+    .Spade8 {
+        background-position: -2212px 0;
+    }
+    .Spade9 {
+        background-position: -2528px 0;
+    }
+    .Spade10 {
+        background-position: -2844px 0;
+    }
+    .Spade11 {
+        background-position: -3160px 0;
+    }
+    .Spade12 {
+        background-position: -3476px 0;
+    }
+    .Spade13 {
+        background-position: -3792px 0;
+    }
+    .Club1 {
+        background-position: 0 -476px;
+    }
+    .Club2 {
+        background-position: -316px -476px;
+    }
+    .Club3 {
+        background-position: -632px -476px;
+    }
+    .Club4 {
+        background-position: -948px -476px;
+    }
+    .Club5 {
+        background-position: -1264px -476px;
+    }
+    .Club6 {
+        background-position: -1580px -476px;
+    }
+    .Club7 {
+        background-position: -1896px -476px;
+    }
+    .Club8 {
+        background-position: -2212px -476px;
+    }
+    .Club9 {
+        background-position: -2528px -476px;
+    }
+    .Club10 {
+        background-position: -2844px -476px;
+    }
+    .Club11 {
+        background-position: -3160px -476px;
+    }
+    .Club12 {
+        background-position: -3476px  -476px;
+    }
+    .Club13 {
+        background-position: -3792px -476px;
+    }
+    .Heart1 {
+        background-position: 0 -969px;
+    }
+    .Heart2 {
+        background-position: -316px -969px;
+    }
+    .Heart3 {
+        background-position: -632px -969px;
+    }
+    .Heart4 {
+        background-position: -948px -969px;
+    }
+    .Heart5 {
+        background-position: -1264px -969px;
+    }
+    .Heart6 {
+        background-position: -1580px -969px;
+    }
+    .Heart7 {
+        background-position: -1896px -969px;
+    }
+    .Heart8 {
+        background-position: -2212px -969px;
+    }
+    .Heart9 {
+        background-position: -2528px -969px;
+    }
+    .Heart10 {
+        background-position: -2844px -969px;
+    }
+    .Heart11 {
+        background-position: -3160px -969px;
+    }
+    .Heart12 {
+        background-position: -3476px  -969px;
+    }
+    .Heart13 {
+        background-position: -3792px -969px;
+    }
+    .Diamond1 {
+        background-position: 0 -1432px;
+    }
+    .Diamond2 {
+        background-position: -316px -1432px;
+    }
+    .Diamond3 {
+        background-position: -632px -1432px;
+    }
+    .Diamond4 {
+        background-position: -948px -1432px;
+    }
+    .Diamond5 {
+        background-position: -1264px -1432px;
+    }
+    .Diamond6 {
+        background-position: -1580px -1432px;
+    }
+    .Diamond7 {
+        background-position: -1896px -1432px;
+    }
+    .Diamond8 {
+        background-position: -2212px -1432px;
+    }
+    .Diamond9 {
+        background-position: -2528px -1432px;
+    }
+    .Diamond10 {
+        background-position: -2844px -1432px;
+    }
+    .Diamond11 {
+        background-position: -3160px -1432px;
+    }
+    .Diamond12 {
+        background-position: -3476px  -1432px;
+    }
+    .Diamond13 {
+        background-position: -3792px -1432px;
+    }
