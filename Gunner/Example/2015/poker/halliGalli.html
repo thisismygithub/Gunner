@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <script type='text/javascript'>
+	  $(function(){
+	  var idx=0, porker = []; 
+	 
+	$("#Btn").click(function(){
+		if(idx==51){//重發一副
+			idx=0, porker = []; 
+			run();
+		}
+		var $display = $("#display");
+		//debugger;
+	    //$display.html(porker[idx]);
+	    $("#currentCard").removeClass().addClass('card').addClass(porker[idx]);
+	    idx++;
+
+	});
+	48
+	function run() {
+		for(var m = 0 ; m < 4 ; m++){
+		  for(var n = 0 ; n < 13; n++){
+			var card = n+1;
+			switch(m){
+			  case 0:
+				  card = "Spade" + card;
+				break;
+			  case 1:
+				  card = "Heart" + card;
+				break;
+			  case 2:
+				  card = "Diamond" + card;
+				break;
+			  case 3: 
+				  card = "Club" + card;
+				break;            
+			}
+			porker.push(card);
+		  }
+		}
+		var i = porker.length; 
+		//console.log(i);
+		while (i) {
+			var j = parseInt(Math.random() * i);
+			var k = porker[--i];
+			porker[i] = porker[j];
+			porker[j] = k;
+		}
+		 
+		$("#allCards").html(porker);
+	  }
+	  run();
+	});
+  </script>
+  <link rel="stylesheet" type="text/css" href="poker_200.css">
+</head>
+<body>
+  <div id='allCards'></div>
+  <div id="display"></div>
+<input id='Btn' value='下一張' type='button'></ipnut>
+  <div id="currentCard" class='card'></div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <script type='text/javascript'>
+$(function(){
+  var fruit = [
+    "蘋果","水蜜桃","龍眼","楊桃","柿子","波羅蜜","櫻桃",
+    "榴槤","香蕉","芭蕉","草莓","藍莓","番茄","水梨",
+    "椰子","鳳梨","番石榴","釋迦","荔枝","木瓜","西瓜","哈蜜瓜",
+    "檸檬","橘子","椪柑","蜜柑","柚子","葡萄柚","可可果",
+    "西洋梨","李子","杏","梅","芒果","奇異果","葡萄","枇杷",
+    "蓮霧","山楂","蔓越莓","無花果","百香果","黑莓","覆盆子",
+    "椰棗","棗子","甜瓜","金桔","枸杞","火龍果"];
+  
+  $("#Btn").click(function(){
+    if(fruit.length > 0 ) {    
+      var idx = Math.floor(Math.random() * fruit.length) ;
+      var color = getRandomColor();
+      
+      $(".display").text(fruit[idx]);
+      $(".display").css({ 'color': color});
+    }else{
+      
+      $(".display").text("沒水果了啦");
+      
+    }
+  });
+  
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+  
+});
+  </script>
+  <style>
+    .display{
+      font-size:216px;
+	  margin: 0 auto;
+    }
+  </style>  
+</head>
+<body>
+<input type="button" id="Btn" value="給我水果">
+  <div class="display"></div>
+</body>
+</html>
