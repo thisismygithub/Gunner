@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marsen", "Gunner\Marsen.csproj", "{1D88093E-4864-4CAB-91A6-9366C21C7204}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gunner.Tests", "Gunner.Tests\Gunner.Tests.csproj", "{BB66B879-E670-4EB4-848F-110E87B767ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "CMoney\Web.csproj", "{C3DA296E-33A8-4749-B928-487C3A90AAEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BB66B879-E670-4EB4-848F-110E87B767ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB66B879-E670-4EB4-848F-110E87B767ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB66B879-E670-4EB4-848F-110E87B767ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3DA296E-33A8-4749-B928-487C3A90AAEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3DA296E-33A8-4749-B928-487C3A90AAEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3DA296E-33A8-4749-B928-487C3A90AAEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3DA296E-33A8-4749-B928-487C3A90AAEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
