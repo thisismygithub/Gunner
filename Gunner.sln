@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marsen", "Gunner\Marsen.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gunner.Tests", "Gunner.Tests\Gunner.Tests.csproj", "{BB66B879-E670-4EB4-848F-110E87B767ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "CMoney\Web.csproj", "{C3DA296E-33A8-4749-B928-487C3A90AAEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{C3DA296E-33A8-4749-B928-487C3A90AAEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
