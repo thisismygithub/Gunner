@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.IO;
 using System.Text.RegularExpressions;
-using CMoney.WebBackend.WebFunction;
 
 public class Util
 {
