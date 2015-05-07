@@ -18,7 +18,6 @@ public static class DataBase
     /// <param name="sqlString"></param>
     /// <param name="parameter"></param>
     /// <returns></returns>
-    [Obsolete("好像沒在用")]
     public static bool ExecuteSQLForSQL(string cnString, string sqlString, SqlParameter parameter)
     {
         using (var cn =
@@ -88,7 +87,6 @@ public static class DataBase
     /// <param name="sqlString">sql string</param>
     /// <param name="_params">command parameters</param>
     /// <returns></returns>
-    [Obsolete("好像沒在用")]
     public static bool ExecuteSQLForSQL(string cnString, string sqlString, List<SqlParameter> _params)
     {
         using (var cn =
@@ -124,7 +122,6 @@ public static class DataBase
     /// <param name="cnString">connection string</param>
     /// <param name="sqlString">sql string</param>
     /// <returns></returns>
-    [Obsolete("好像沒在用")]
     public static bool ExecuteSQLForSQL(string cnString, string sqlString)
     {
         using (var cn =
@@ -155,7 +152,6 @@ public static class DataBase
     /// <param name="cnString">connection string</param>
     /// <param name="sqlString">sql string</param>
     /// <returns></returns>
-    [Obsolete("好像沒在用")]
     public static bool ExecuteSqlForOleDb(string cnString, string sqlString)
     {
         using (var cn =
@@ -182,8 +178,7 @@ public static class DataBase
             }
         }
     }
-
-    [Obsolete("好像沒在用")]
+    
     public static bool ExecuteSqlForOleDb(string cnString, string sqlString, SqlParameter[] _params)
     {
         using (var cn =

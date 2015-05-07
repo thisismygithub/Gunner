@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
-using CMoney.WebBackend.WebFunction.VariavlesClass;
 using System.Globalization;
 
 public static class StringMethod
