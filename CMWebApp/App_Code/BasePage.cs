@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ServiceModel.Channels;
 using System.Web;
 using System.Web.UI;
 
@@ -6,7 +7,7 @@ using System.Web.UI;
 /// <summary>
 /// 基本頁面
 /// </summary>
-public class BasePage:Page
+public class BasePage : Page
 {
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -21,10 +22,20 @@ public class IntranetPage : Page
 {
     protected void Page_Init(object sender, EventArgs e)
     {
-        //DO SOMETHING HERE
+        if (IsIntranet)
+        {
+            //DO SOMETHING HERE    
+            Response.Redirect("/cmwebapp/error/authorizedeny.aspx");
+        }
+        else
+        {
+            //DO SOMETHING HERE
+            
+        }
     }
 
-    public static bool IsIntranet {
+    private static bool IsIntranet
+    {
         get
         {
             string ipAddress = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
@@ -46,8 +57,20 @@ public class IntranetPage : Page
 /// </summary>
 public class MemberPage : Page
 {
-
-    public static bool IsMember {
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        base.OnInit(e);
+        if (IsMember)
+        {
+            //DO SOMETHING HERE    
+        }
+        else
+        {
+            //DO SOMETHING HERE
+        }
+    }
+    public static bool IsMember
+    {
         get
         {
             //TODO:Check your member System
@@ -56,4 +79,5 @@ public class MemberPage : Page
         }
     }
 }
+
 
