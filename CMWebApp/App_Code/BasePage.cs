@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel.Channels;
 using System.Web;
 using System.Web.UI;
@@ -9,6 +10,7 @@ using System.Web.UI;
 /// </summary>
 public class BasePage : Page
 {
+    protected Dictionary<string, object> PageDataDic = new Dictionary<string, object>();
     protected void Page_Init(object sender, EventArgs e)
     {
         //DO SOMETHING IS GENERAL
