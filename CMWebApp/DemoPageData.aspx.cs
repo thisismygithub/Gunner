@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class CmDemo :BasePage
+public partial class DemoPageData : BasePage
 {
     
     protected void Page_Load(object sender, EventArgs e)
