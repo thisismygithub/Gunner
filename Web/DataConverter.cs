@@ -105,15 +105,15 @@ public class DataConverter
 
     public static object Deserialize(string jsonText, Type valueType)
     {
-        Newtonsoft.Json.JsonSerializer json = new Newtonsoft.Json.JsonSerializer();
+        var json = new JsonSerializer();
 
-        json.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-        json.ObjectCreationHandling = Newtonsoft.Json.ObjectCreationHandling.Replace;
-        json.MissingMemberHandling = Newtonsoft.Json.MissingMemberHandling.Ignore;
-        json.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+        json.NullValueHandling = NullValueHandling.Ignore;
+        json.ObjectCreationHandling = ObjectCreationHandling.Replace;
+        json.MissingMemberHandling = MissingMemberHandling.Ignore;
+        json.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
-        StringReader sr = new StringReader(jsonText);
-        Newtonsoft.Json.JsonTextReader reader = new JsonTextReader(sr);
+        var sr = new StringReader(jsonText);
+        var reader = new JsonTextReader(sr);
         object result = json.Deserialize(reader, valueType);
         reader.Close();
 
