@@ -7,17 +7,8 @@ using System.IO;
 /// <summary>
 /// IO 相關類別。
 /// </summary>
-public class IO
+public static class IO
 {
-    /// <summary>
-    /// IO類別預設建構子
-    /// </summary>
-    public IO()
-    {
-        //
-        // TODO: 在此加入建構函式的程式碼
-        //
-    }
 
     /// <summary>
     /// 取得檔案內容(follow)
@@ -35,8 +26,7 @@ public class IO
         using (var streamReader = new StreamReader(fileName))
         {
             string line;
-            streamReader.ReadLine();
-
+            
             while ((line = streamReader.ReadLine()) != null)
             {
                 stringBulilder.Append(line);
@@ -52,7 +42,6 @@ public class IO
     /// <param name="fileName">檔案路徑</param>
     /// <param name="encoding">取得的內容編碼格式</param>
     /// <returns></returns>
-    [Obsolete("好像沒人用")]
     public static string GetFileContent(string fileName, Encoding encoding)
     {
         if (!File.Exists(fileName))
