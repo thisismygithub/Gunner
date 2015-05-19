@@ -34,7 +34,12 @@ namespace Demo
         private static object GetPagerData()
         {
             var data = GetData.PagerData(physicalPath);
-            var result = data;
+            var showSize = 10;
+            var currentPage = 1;
+            var totalPages = data.Count/showSize;
+            var skipSize = showSize * (currentPage - 1);
+            var result = data.Skip(skipSize)
+                        .Take(showSize);
             return result;
         }
     }

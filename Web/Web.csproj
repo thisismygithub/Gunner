@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
+    <Compile Include="GoogleTracker.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="WebAccess.cs" />
     <Compile Include="DataConverter.cs" />

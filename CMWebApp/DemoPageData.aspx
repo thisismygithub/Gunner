@@ -8,27 +8,27 @@
         <div class="container-fluid js-jsondata">
   
         </div>
-      <table class="table">
-    <thead>
-      <tr>
-        <th>編號</th>
-        <th>長度</th>
-        <th>重量</th>
-      </tr>
-    </thead>
-    <tbody class="js-tbody">
+    <table class="table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+          </tr>
+        </thead>
+        <tbody class="js-tbody">
 
-    </tbody>
-  </table>
+        </tbody>
+    </table>
     <asp:HiddenField ClientIDMode="Static" ID="hidPageData" runat="server" />
         </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootContent" Runat="Server">
     <script type="text/template" id="datarow">
         <tr>
-            <td>{No}</td>
-            <td>{Length}</td>
-            <td>{Weight}</td>
+            <td>{id}</td>
+            <td>{name}</td>
+            <td>{email}</td>
         </tr>
     </script>
     <script type="text/javascript">
