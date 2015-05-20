@@ -128,10 +128,7 @@ public class Util
         {
             return string.Format("<link href=\"{0}?_={1}\" rel=\"stylesheet\" type=\"text/css\" />", path, GetLastWriteTime(path));
         }
-        else
-        {
-            return string.Format("<link href=\"{0}?_={1}\" rel=\"stylesheet\" type=\"text/css\" media=\"{2}\" />", path, GetLastWriteTime(path), media);
-        }
+        return string.Format("<link href=\"{0}?_={1}\" rel=\"stylesheet\" type=\"text/css\" media=\"{2}\" />", path, GetLastWriteTime(path), media);
     }
 
     public static string GetScriptElement(string path)
@@ -157,6 +154,22 @@ public class Util
 
         return result;
     }
+    /// <summary>
+    /// 是否為內網
+    /// </summary>
+    public static bool IsIntranet
+    {
+        get
+        {
+            string ipAddress = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
+            string hostName = HttpContext.Current.Request.ServerVariables["HTTP_HOST"];//check host if need            
+            if (ipAddress == "127.0.0.1" || ipAddress == "::1" || ipAddress.StartsWith("192.168.") || hostName.StartsWith("dev"))
+            {
+                return true;
+            }
+            return false;
+        }
+    }
 
     public static bool IsFromAppViewer()
     {
@@ -166,10 +179,7 @@ public class Util
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     /// <summary>
@@ -242,10 +252,7 @@ public class Util
         {
             return string.Format("<div style=\"display:inline;\" title=\"{0}\">{1}</div>", text, truncatedText);
         }
-        else
-        {
-            return truncatedText;
-        }
+        return truncatedText;
     }
 
     public static string TruncateTextByCss(string text, int maxLength, bool showToolTip)
@@ -254,10 +261,7 @@ public class Util
         {
             return string.Format("<div style=\"overflow : hidden; text-overflow : ellipsis; white-space : nowrap; width : {0}px;\" title=\"{1}\">{1}</div>", maxLength, text);
         }
-        else
-        {
-            return string.Format("<div style=\"overflow : hidden; text-overflow : ellipsis; white-space : nowrap; width : {0}px;\">{1}</div>", maxLength, text);
-        }
+        return string.Format("<div style=\"overflow : hidden; text-overflow : ellipsis; white-space : nowrap; width : {0}px;\">{1}</div>", maxLength, text);
     }
 
     public static string GetAnonymisedEmailAddress(string emailAddress)
@@ -281,19 +285,13 @@ public class Util
         {
             return HttpContext.Current.Request.UserHostAddress ?? "";
         }
-        else
+        string xForwardedFor = HttpContext.Current.Request.Headers["X-Forwarded-For"];
+        string[] ipAddressList = xForwardedFor.Split(',');
+        if (ipAddressList.Count() > 0)
         {
-            string xForwardedFor = HttpContext.Current.Request.Headers["X-Forwarded-For"];
-            string[] ipAddressList = xForwardedFor.Split(',');
-            if (ipAddressList.Count() > 0)
-            {
-                return ipAddressList[0].Trim();
-            }
-            else
-            {
-                return string.Empty;
-            }
+            return ipAddressList[0].Trim();
         }
+        return string.Empty;
     }
 
     public static string UpdateInvoiceInfo(string invoiceInfo, string key, string value)

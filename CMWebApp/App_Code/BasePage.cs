@@ -24,7 +24,7 @@ public class IntranetPage : Page
 {
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (IsIntranet)
+        if (Util.IsIntranet)
         {
             //DO SOMETHING HERE    
             Response.Redirect("/cmwebapp/error/authorizedeny.aspx");
@@ -36,22 +36,7 @@ public class IntranetPage : Page
         }
     }
 
-    private static bool IsIntranet
-    {
-        get
-        {
-            string ipAddress = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
-            //string hostName = HttpContext.Current.Request.ServerVariables["HTTP_HOST"];//check host if need            
-            if (ipAddress == "127.0.0.1" || ipAddress == "::1" || ipAddress.StartsWith("192.168.10."))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
+
 }
 
 /// <summary>
