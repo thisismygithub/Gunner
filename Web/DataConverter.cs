@@ -66,41 +66,44 @@ public class DataConverter
 
     public static string Serialize(object value)
     {
-        Type type = value.GetType();
-
-        Newtonsoft.Json.JsonSerializer json = new Newtonsoft.Json.JsonSerializer();
-
-        json.NullValueHandling = NullValueHandling.Ignore;
-
-        json.ObjectCreationHandling = Newtonsoft.Json.ObjectCreationHandling.Replace;
-        json.MissingMemberHandling = Newtonsoft.Json.MissingMemberHandling.Ignore;
-        json.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-
-        if (type == typeof(DataRow))
+        var result = string.Empty;
+        if (value != null)
         {
-            json.Converters.Add(new DataRowConverter());
-        }
-        else if (type == typeof(DataTable))
-        {
-            json.Converters.Add(new DataTableConverter());
-        }
-        else if (type == typeof(DataSet))
-        {
-            json.Converters.Add(new DataSetConverter());
-        }
-        string output;
-        using (StringWriter sw = new StringWriter())
-        using (Newtonsoft.Json.JsonTextWriter writer = new JsonTextWriter(sw))
-        {
-            writer.QuoteChar = '"';
-            json.Serialize(writer, value);
+            Type type = value.GetType();
+            JsonSerializer json = new JsonSerializer();
 
-            output = sw.ToString();
-            writer.Close();
-            sw.Close();
+            json.NullValueHandling = NullValueHandling.Ignore;
+
+            json.ObjectCreationHandling = ObjectCreationHandling.Replace;
+            json.MissingMemberHandling = MissingMemberHandling.Ignore;
+            json.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
+            if (type == typeof (DataRow))
+            {
+                json.Converters.Add(new DataRowConverter());
+            }
+            else if (type == typeof (DataTable))
+            {
+                json.Converters.Add(new DataTableConverter());
+            }
+            else if (type == typeof (DataSet))
+            {
+                json.Converters.Add(new DataSetConverter());
+            }
+
+            using (StringWriter sw = new StringWriter())
+            using (JsonTextWriter writer = new JsonTextWriter(sw))
+            {
+                writer.QuoteChar = '"';
+                json.Serialize(writer, value);
+
+                result = sw.ToString();
+                writer.Close();
+                sw.Close();
+            }
         }
 
-        return output;
+        return result;
     }
 
     public static object Deserialize(string jsonText, Type valueType)

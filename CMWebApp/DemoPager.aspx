@@ -30,8 +30,21 @@
     </script>
     <script type="text/javascript">
         $(function () {
+            $.ajax({
+                url: "/cmwebapp/ashx/demoHandler.ashx",
+                data: {
+                    action: 'getpagerdata'
+                },
+                type: "post",
+                cache: false,
+                async: true,
 
-
+                dataType: "json",
+                success: function(response) {
+                    console.log(response);
+                    
+                }
+            });
         });
     </script>
 </asp:Content>
