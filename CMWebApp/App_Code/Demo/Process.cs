@@ -1,9 +1,7 @@
 ﻿
 // Demo Namespace底下，只放著demo用的class 
 
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Web;
 
 namespace Demo
@@ -13,7 +11,6 @@ namespace Demo
         #region 組檔案路徑
 
         private static readonly string AppPath = HttpContext.Current.Request.ApplicationPath;
-        static string physicalPath = string.Format(@"{0}\App_Code\Demo\pagerdata.json", HttpContext.Current.Request.MapPath(AppPath));
         #endregion
 
         protected static NameValueCollection ReqParams = null; 
@@ -37,9 +34,10 @@ namespace Demo
 
         private static object GetPagerData()
         {
+            var physicalPath = string.Format(@"{0}\App_Code\Demo\pagerdata.json", HttpContext.Current.Request.MapPath(AppPath));
             var page = new Pager(physicalPath) ;
             
-            var targetPage = 1;
+            int targetPage;
             int.TryParse(ReqParams["page"] ?? "1", out targetPage);
 
             return page.GetData(targetPage, 18);
