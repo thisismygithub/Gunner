@@ -2,6 +2,7 @@
 // Demo Namespace底下，只放著demo用的class 
 
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 
@@ -14,10 +15,13 @@ namespace Demo
         private static readonly string AppPath = HttpContext.Current.Request.ApplicationPath;
         static string physicalPath = string.Format(@"{0}\App_Code\Demo\pagerdata.json", HttpContext.Current.Request.MapPath(AppPath));
         #endregion
+
+        protected static NameValueCollection ReqParams = null; 
         public static void Main()
         {
+            ReqParams = HttpContext.Current.Request.Params;
             var context = HttpContext.Current;
-            string action = context.Request.Params["action"] ?? string.Empty;
+            string action = ReqParams["action"] ?? string.Empty;
             object response = null;
             switch (action.ToLower())
             {
@@ -33,41 +37,14 @@ namespace Demo
 
         private static object GetPagerData()
         {
-            var data = GetData.PagerData(physicalPath);
-            var showSize = 10;
-            var currentPage = 1;
-            var totalPages = data.Count/showSize;
-            var skipSize = showSize * (currentPage - 1);
-            var result = data.Skip(skipSize)
-                        .Take(showSize);
-            return result;
+            var page = new Pager(physicalPath) ;
+            
+            var targetPage = 1;
+            int.TryParse(ReqParams["page"] ?? "1", out targetPage);
+
+            return page.GetData(targetPage, 18);
         }
     }
 
-    /// <summary>
-    /// 取資料
-    /// </summary>
-    public static class GetData
-    {
 
-        internal static List<PagerData> PagerData(string jsonFilePath)
-        {
-            var content = IO.GetFileContent(jsonFilePath);
-            var result = (List<PagerData>)DataConverter.Deserialize(content, typeof(List<PagerData>));
-            return result;
-        }
-    }
-
-    #region DEMO Data Class for Serialize and Deserialize
-
-    public class PagerData
-    {
-        public uint PostId { get; set; }
-        public uint Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Body { get; set; }
-    }
-
-    #endregion
 }
