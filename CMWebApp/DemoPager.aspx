@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" Runat="Server">
 <span class="text-center js-pager"></span>
-<table class="table">
+<table class="table table-striped table-hover">
     <thead>
         <tr>
         <th>Id</th>
