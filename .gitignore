@@ -160,3 +160,5 @@ bin
 /CMWebApp/bin
 /CMWebApp/bin/*.dll
 /CMWebApp/bin/*.xml
+*.dll
+CMWebApp/Bin/Newtonsoft.Json.xml
