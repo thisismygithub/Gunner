@@ -75,7 +75,7 @@ public class WebAccess
     /// <returns>Page content in HTML</returns>
     public static string LoadAtServer(string url, int timeout = 120000)
     {
-        string result = string.Empty;
+        string result;
 
         try
         {
@@ -92,9 +92,10 @@ public class WebAccess
 
             result = strBuilder.ToString();
         }
-        catch
+        catch (Exception ex)
         {
-            // CMoney.Logger.Log(ex); might not be set up, so do nothing.
+            //do something
+            throw;
         }
 
         return result;
@@ -149,8 +150,7 @@ public class WebAccess
             result = streamReader.ReadToEnd();
         }
         catch (Exception ex)
-        {
-            // CMoney.Logger.Log(ex);
+        {            
             result = ex.ToString();
         }
 

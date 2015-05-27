@@ -156,3 +156,7 @@ bin/
 .DS_Store
 packages
 bin
+bin
+/CMWebApp/bin
+/CMWebApp/bin/*.dll
+/CMWebApp/bin/*.xml
