@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" Runat="Server">
     <input type="button" value="upload" id="uploadImg" />
+    <img src="" alt="preview" id="previewImg" style="display: none;" />
     <iframe id='iframeUpload' ></iframe>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootContent" Runat="Server">
@@ -30,6 +31,16 @@
             }
 
         });
+
+        function fo(rep) {            
+            if (rep.errorMsg !== "") {
+                alert(rep.errorMsg);
+            } else {
+                debugger;
+                $("#previewImg").show();
+                $("#previewImg").attr('src', '');
+            }
+        }
     </script>
 </asp:Content>
 
