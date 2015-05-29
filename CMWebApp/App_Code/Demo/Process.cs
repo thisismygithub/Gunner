@@ -53,8 +53,6 @@ namespace Demo
             {
                 //todo:return error
                 errorMsg = "NO FILE";
-
-
             }
             else
             {
@@ -115,7 +113,15 @@ namespace Demo
 
             }
 
-            string result = string.Format("<script type='text/javascript'>parent.fo({0});</script>", DataConverter.Serialize(new
+            string result = string.Format(@"<script type='text/javascript'>        function fo(rep) {{            
+            if (rep.errorMsg !== '') {{
+                alert(rep.errorMsg);
+            }} else {{                
+                parent.$('#previewImg').show();
+                parent.$('#previewImg').attr('src', rep.previewPath + rep.fileName);
+            }}
+        }};
+        fo({0});</script>", DataConverter.Serialize(new
                                                                                                                              {
                                                                                                                                  errorMsg,
                                                                                                                                  fileName,
