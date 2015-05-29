@@ -1,13 +1,10 @@
-﻿
-// Demo Namespace底下，只放著demo用的class 
-
-using System;
+﻿using System;
 using System.Collections.Specialized;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
-
+// Demo Namespace底下，只放著demo用的class 
 namespace Demo
 {
     public class Process
@@ -23,7 +20,7 @@ namespace Demo
             ReqParams = HttpContext.Current.Request.Params;
             var context = HttpContext.Current;
             string action = ReqParams["action"] ?? string.Empty;
-            string response = string.Empty;
+            string response;
             context.Response.Clear();
             switch (action.ToLower())
             {
@@ -33,20 +30,35 @@ namespace Demo
                     break;
 
                 case "uploadimg":
-                    response = UploadImg();       
+                    response = UploadImg();
+                    break;
+                case "uploadallimg":
+                    var uploadedInfo = UploadAllImg();
+                    response = DataConverter.Serialize(uploadedInfo);
                     break;
                 default:
+                    response = "UNKNOW ACTION";
                     break;
             }
             context.Response.Write(response);
             context.Response.End();
         }
+        private static object GetPagerData()
+        {
+            var physicalPath = string.Format(@"{0}\App_Code\Demo\pagerdata.json", HttpContext.Current.Server.MapPath(AppPath));
+            var page = new Pager(physicalPath);
 
-        private static string UploadImg()
+            int targetPage;
+            int.TryParse(ReqParams["page"] ?? "1", out targetPage);
+
+            return page.GetData(targetPage, 18);
+        }
+
+        private static UploadedInfo UploadImage()
         {
             var fileName = string.Empty;
             var previewPath = string.Empty;
-            var errorMsg = string.Empty ;
+            var errorMsg = string.Empty;
             var httpContext = HttpContext.Current;
             var files = httpContext.Request.Files;
             if (files.Count == 0)
@@ -106,47 +118,44 @@ namespace Demo
                         //image = ScaleImage(image, 219);
                         image.Save(path, jpegCodec, epParameters);
                     }
-
-
                 }
-
-
             }
+            return new UploadedInfo { ErrorMsg = errorMsg, FileName = fileName, PreviewPath = previewPath };
+        }
 
-            string result = string.Format(@"<script type='text/javascript'>        function fo(rep) {{            
-            if (rep.errorMsg !== '') {{
-                alert(rep.errorMsg);
-            }} else {{                
-                parent.$('#previewImg').show();
-                parent.$('#previewImg').attr('src', rep.previewPath + rep.fileName);
-            }}
-        }};
-        fo({0});</script>", DataConverter.Serialize(new
-                                                                                                                             {
-                                                                                                                                 errorMsg,
-                                                                                                                                 fileName,
-                                                                                                                                 previewPath
-                                                                                                                             }));
-            //restult = DataConverter.Serialize(new
-            //                                  {
-            //                                      errorMsg,
-            //                                      fileName
-            //                                  });
-
+        private static string UploadImg()
+        {
+            var uploadedInfo = UploadImage();
+            var jsonParam = DataConverter.Serialize(uploadedInfo);
+            var result = string.Format(@"<script type='text/javascript'>        
+                    function fo(rep) {{            
+                        if (rep.ErrorMsg !== '') {{
+                            alert(rep.errorMsg);
+                        }} else {{                
+                            parent.$('#previewImg').show();
+                            parent.$('#previewImg').attr('src', rep.PreviewPath + rep.FileName);
+                        }}
+                    }};
+                    fo({0});</script>", jsonParam);
             return result;
         }
 
-        private static object GetPagerData()
+        private static object UploadAllImg()
         {
-            var physicalPath = string.Format(@"{0}\App_Code\Demo\pagerdata.json", HttpContext.Current.Server.MapPath(AppPath));
-            var page = new Pager(physicalPath) ;
-            
-            int targetPage;
-            int.TryParse(ReqParams["page"] ?? "1", out targetPage);
-
-            return page.GetData(targetPage, 18);
+            var uploadedInfo = UploadImage();
+            if (string.IsNullOrEmpty(uploadedInfo.ErrorMsg))
+            {
+                return new object();
+            }
+            return new {error = uploadedInfo.ErrorMsg};
         }
+
     }
 
-
+    public class UploadedInfo
+    {
+        public string FileName { get; set; }
+        public string ErrorMsg { get; set; }
+        public string PreviewPath { get; set; }
+    }
 }

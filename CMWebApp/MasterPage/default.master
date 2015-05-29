@@ -7,7 +7,7 @@
     <title></title>
     <!--css should be there or HeadContent-->
     <%=Util.GetLinkElement("/cmwebapp/content/bootstrap/css/bootstrap.css") %>    
-    <%=Util.GetLinkElement("/cmwebapp/content/bootstrap/css/bootstrap-theme.css") %>    
+    <%=Util.GetLinkElement("/cmwebapp/content/kartik-v-bootstrap-fileinput/css/fileinput.css") %> 
     <asp:ContentPlaceHolder id="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
