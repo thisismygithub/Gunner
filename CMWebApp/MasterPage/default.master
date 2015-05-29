@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div class="container">
     <div class="page-header">
       <h1>Example page header <small>Subtext for header</small></h1>
     </div>
@@ -24,6 +25,7 @@
         <p class="text-muted">Place sticky footer content here.</p>
       </div>
     </footer>
+    </div>
     <!--js should be there or FootContent-->
     <%=Util.GetScriptElement("/cmwebapp/content/jquery/jquery-1.11.3.min.js") %>
     <%=Util.GetScriptElement("/cmwebapp/content/bootstrap/js/bootstrap.js") %>            
