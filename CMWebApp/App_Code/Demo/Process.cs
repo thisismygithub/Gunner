@@ -36,6 +36,9 @@ namespace Demo
                     var uploadedInfo = UploadAllImg();
                     response = DataConverter.Serialize(uploadedInfo);
                     break;
+                case "ckeditoruploadimg":                    
+                    response =  CkeditorUploadImg();
+                    break;
                 default:
                     response = "UNKNOW ACTION";
                     break;
@@ -43,6 +46,17 @@ namespace Demo
             context.Response.Write(response);
             context.Response.End();
         }
+
+        private static string CkeditorUploadImg()
+        {
+            string temp = "<script>debugger ; window.parent.CKEDITOR.tools.callFunction({0}, '{1}','{2}');</script>";
+            var ckEditorFuncNum = ReqParams["CKEditorFuncNum"];
+            var uploadedInfo = UploadImage();
+            var result = string.Format(temp, ckEditorFuncNum, uploadedInfo.PreviewUrl,
+                uploadedInfo.ErrorMsg);
+            return result;
+        }
+
         private static object GetPagerData()
         {
             var physicalPath = string.Format(@"{0}\App_Code\Demo\pagerdata.json", HttpContext.Current.Server.MapPath(AppPath));
@@ -105,7 +119,7 @@ namespace Demo
                         var jpegCodec = codecs.FirstOrDefault(t => t.MimeType == "image/jpeg");
 
                         #endregion
-                        previewPath = string.Format(@"{0}\Image\Temp\", AppPath);
+                        previewPath = string.Format(@"{0}\Image\Temp\", AppPath).Replace("\\","/");
                         var dicPath = httpContext.Server.MapPath(previewPath);
                         var path = string.Format("{0}{1}", dicPath, fileName);
 
@@ -120,7 +134,7 @@ namespace Demo
                     }
                 }
             }
-            return new UploadedInfo { ErrorMsg = errorMsg, FileName = fileName, PreviewPath = previewPath };
+            return new UploadedInfo { ErrorMsg = errorMsg, FileName = fileName, PreviewUrl = previewPath + fileName };
         }
 
         private static string UploadImg()
@@ -133,7 +147,7 @@ namespace Demo
                             alert(rep.errorMsg);
                         }} else {{                
                             parent.$('#previewImg').show();
-                            parent.$('#previewImg').attr('src', rep.PreviewPath + rep.FileName);
+                            parent.$('#previewImg').attr('src', rep.PreviewUrl );
                         }}
                     }};
                     fo({0});</script>", jsonParam);
@@ -156,6 +170,8 @@ namespace Demo
     {
         public string FileName { get; set; }
         public string ErrorMsg { get; set; }
+        [Obsolete("已過時,請以PreviewUrl取代",false)]
         public string PreviewPath { get; set; }
+        public string PreviewUrl { get; set; }
     }
 }
