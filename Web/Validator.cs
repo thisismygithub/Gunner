@@ -14,7 +14,7 @@ public class Validator
     public static Regex s_regexKeyGenCode = new Regex(@"^[a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}$");
     public static Regex s_regexChinese = new Regex(@"^[\u4E00-\u9fa5]+$");
     //public static Regex s_regexEmailAddress = new Regex(@"^([a-zA-Z0-9]+([\.+_-][a-zA-Z0-9]+)*)@(([a-zA-Z0-9]+((\.|[-]{1,2})[a-zA-Z0-9]+)*)\.[a-zA-Z]{2,6})$");
-    public static Regex s_regexEmailAddress = new Regex(@"\A(?:[a-zA-Z0-9_.-]+(?:\.[a-z0-9_.-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)\Z");
+    public static Regex s_regexEmailAddress = new Regex(@"^([a-zA-Z0-9]+([\.][a-zA-Z0-9]+)*)@(([a-zA-Z0-9]+((\.|[-]{1,2})[a-zA-Z0-9]+)*)\.[a-zA-Z]{2,6})$");
     public static Regex s_regexUrl = new Regex(@"(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?");
     public static Regex s_regexGenericUrl = new Regex(@"((http|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?");
     public static Regex s_regexBoolean_String = new Regex(@"^(true|false)$", RegexOptions.IgnoreCase);
